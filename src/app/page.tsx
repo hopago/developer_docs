@@ -1,8 +1,11 @@
+import Link from "next/link";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <Link className="text-blue-500 underline text-2xl" href="/documents/123">
+      Go to documents Id Page
+    </Link>
+  );
+};
 
-export default Home
+export default Home;
