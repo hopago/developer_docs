@@ -94,6 +94,10 @@ body {
     margin-top: 0;
   }
 
+  img:first-child {
+    margin-top: 24px;
+  }
+
   /* List styles */
   ul,
   ol {

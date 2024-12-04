@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor, EditorContent, Editor as IEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
@@ -9,24 +9,43 @@ import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Image from "@tiptap/extension-image";
+import ImageResize from "tiptap-extension-resize-image";
+import Underline from "@tiptap/extension-underline";
+import TextStyle from "@tiptap/extension-text-style";
+import FontFamily from "@tiptap/extension-font-family";
+
+import { useEditorStore } from "@/store/editor/use-editor-store";
 
 export const Editor = () => {
+  const { setEditor } = useEditorStore();
+
+  const handleEditorChange = ({ editor }: { editor: IEditor }) =>
+    setEditor(editor);
+
   const editor = useEditor({
+    onCreate: handleEditorChange,
+    onDestroy() {
+      setEditor(null);
+    },
+    onUpdate: handleEditorChange,
+    onSelectionUpdate: handleEditorChange,
+    onTransaction: handleEditorChange,
+    onFocus: handleEditorChange,
+    onBlur: handleEditorChange,
+    onContentError: handleEditorChange,
     extensions: [
       StarterKit,
       TaskList,
-      TaskItem.configure({
-        nested: true,
-      }),
-      Table.configure({
-        resizable: true,
-      }),
+      TaskItem.configure({ nested: true }),
+      Table.configure({ resizable: true }),
       TableRow,
       TableHeader,
       TableCell,
-      Image.configure({
-        allowBase64: true,
-      }),
+      Image.configure({ allowBase64: true }),
+      ImageResize,
+      Underline,
+      TextStyle,
+      FontFamily,
     ],
     editorProps: {
       attributes: {

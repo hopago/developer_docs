@@ -10,6 +10,9 @@ export const gothic = Nanum_Gothic({
 export const metadata: Metadata = {
   title: "HoPlog",
   description: "Shared Log by HoPlog",
+  icons: {
+    icon: ["/favicon/favicon.ico"],
+  },
 };
 
 export default function RootLayout({
