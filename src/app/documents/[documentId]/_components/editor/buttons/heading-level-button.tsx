@@ -1,5 +1,7 @@
 import { ChevronDownIcon } from "lucide-react";
 
+import { type Level } from "@tiptap/extension-heading";
+
 import { useEditorStore } from "@/store/editor/use-editor-store";
 
 import {
@@ -10,9 +12,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-import { type Level } from "@tiptap/extension-heading";
-
-type Headings = {
+type Heading = {
   label: string;
   value: Level;
   fontSize: string;
@@ -21,7 +21,7 @@ type Headings = {
 export const HeadingLevelButton = () => {
   const { editor } = useEditorStore();
 
-  const headings: Headings[] = [
+  const headings: Heading[] = [
     { label: "기본", value: 1, fontSize: "16px" },
     { label: "제목 1", value: 2, fontSize: "32px" },
     { label: "제목 2", value: 3, fontSize: "24px" },
@@ -41,9 +41,9 @@ export const HeadingLevelButton = () => {
     const chain = editor?.chain().focus();
 
     if (value === 1) {
-      chain?.unsetBold().setParagraph().run();
+      chain?.setParagraph().run();
     } else {
-      chain?.setBold().setHeading({ level: value }).run();
+      chain?.setHeading({ level: value }).run();
     }
   };
 

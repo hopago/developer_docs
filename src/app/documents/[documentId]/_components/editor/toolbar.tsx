@@ -20,6 +20,13 @@ import { Separator } from "@/components/ui/separator";
 import { ToolbarButton } from "./buttons/toolbar-button";
 import { FontFamilyButton } from "./buttons/font-family-button";
 import { HeadingLevelButton } from "./buttons/heading-level-button";
+import { TextColorButton } from "./buttons/text-color-button";
+import { HighlightColorButton } from "./buttons/highlight-color-button";
+import { LinkButton } from "./buttons/link-button";
+import { ImageButton } from "./buttons/image-button";
+import { AlignButton } from "./buttons/align-button";
+import { ListButton } from "./buttons/list-button";
+import { FontSizeButton } from "./buttons/font-size-button";
 
 export interface ToolbarButtonProps {
   onClick?: () => void;
@@ -119,19 +126,25 @@ export const Toolbar = ({ onClick, isActive, icon }: ToolbarButtonProps) => {
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       <HeadingLevelButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
-      {/** TODO: Font Size */}
+      <FontSizeButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       {sections[1].map((item) => (
         <ToolbarButton key={item.label} {...item} />
       ))}
-      {/** TODO: Text Color */}
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
-      {/** TODO: Highlight color */}
-      {/** TODO: Link */}
-      {/** TODO: Image */}
-      {/** TODO: Align */}
+      <TextColorButton />
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
+      <HighlightColorButton />
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
+      <LinkButton />
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
+      <ImageButton />
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
+      <AlignButton />
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       {/** TODO: Line height */}
-      {/** TODO: List */}
+      <ListButton />
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       {sections[2].map((item) => (
         <ToolbarButton key={item.label} {...item} />
       ))}
