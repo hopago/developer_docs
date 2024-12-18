@@ -17,16 +17,19 @@ import {
 import { useEditorStore } from "@/store/editor/use-editor-store";
 
 import { Separator } from "@/components/ui/separator";
-import { ToolbarButton } from "./buttons/toolbar-button";
-import { FontFamilyButton } from "./buttons/font-family-button";
-import { HeadingLevelButton } from "./buttons/heading-level-button";
-import { TextColorButton } from "./buttons/text-color-button";
-import { HighlightColorButton } from "./buttons/highlight-color-button";
-import { LinkButton } from "./buttons/link-button";
-import { ImageButton } from "./buttons/image-button";
-import { AlignButton } from "./buttons/align-button";
-import { ListButton } from "./buttons/list-button";
-import { FontSizeButton } from "./buttons/font-size-button";
+import {
+  ToolbarButton,
+  FontFamilyButton,
+  HeadingLevelButton,
+  TextColorButton,
+  HighlightColorButton,
+  LinkButton,
+  ImageButton,
+  AlignButton,
+  ListButton,
+  FontSizeButton,
+  LineHeightButton,
+} from "@/app/documents/[documentId]/_components/editor/buttons";
 
 export interface ToolbarButtonProps {
   onClick?: () => void;
@@ -142,7 +145,8 @@ export const Toolbar = ({ onClick, isActive, icon }: ToolbarButtonProps) => {
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       <AlignButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
-      {/** TODO: Line height */}
+      <LineHeightButton />
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       <ListButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       {sections[2].map((item) => (
